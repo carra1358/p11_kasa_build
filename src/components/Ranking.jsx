@@ -5,13 +5,9 @@ function Ranking({ rankingNumber}) {
   
   return (
     <div className="ranking_container">
-      {star.map((number) => {
-        if (rankingNumber >= number) {
-          return <VscStarFull style={{ color: "#FF6060" }} className="star" key={number}/>;
-        } else {
-          return <VscStarFull style={{ color: "#E3E3E3" }} className="star" key={number}/>;
-        }
-      })}
+      {star.map((number) => 
+       <VscStarFull style={{ color: rankingNumber >= number ? "#FF6060" :"#E3E3E3" }} className="star" key={number}/>
+      )}
     </div>
   );
 }

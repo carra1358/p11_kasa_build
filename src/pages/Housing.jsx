@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import "../styles/housing.scss";
 import Dropdown from "../components/Dropdown";
 import { data } from "../data/data";
@@ -6,11 +6,15 @@ import Carousel from "../components/Carousel";
 import Ranking from "../components/Ranking";
 
 function Housing() {
-  let location = useLocation();
+
   let urlParams = useParams();
 
-  console.log(location, urlParams.id);
+ 
   const houseData = data.find((data) => data.id === urlParams.id);
+ 
+  if( houseData == null){
+   return <Navigate to="/error"/>
+  }
 
   const arrayLenght = houseData.pictures.length;
   return (
